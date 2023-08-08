@@ -1,10 +1,8 @@
 defmodule TalkieWeb.APIController do
-  alias Phoenix.PubSub
-	use TalkieWeb, :controller
+  use TalkieWeb, :controller
 
 	def ping(conn, _params) do
-    # TalkieWeb.Endpoint.broadcast!("messages", "ping", {:message, "pinged"})
-    PubSub.broadcast!(Talkie.PubSub, "messages",
+    Phoenix.PubSub.broadcast!(Talkie.PubSub, "messages",
       %Phoenix.Socket.Broadcast{
         topic: "messages",
         event: "ping",
@@ -12,5 +10,5 @@ defmodule TalkieWeb.APIController do
       }
     )
 		json(conn, %{pong: true})
-    end
+  end
 end

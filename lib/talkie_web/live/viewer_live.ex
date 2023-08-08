@@ -15,7 +15,7 @@ defmodule TalkieWeb.ViewerLive.Index do
   @impl true
   def mount(_params, _session, socket) do
     TalkieWeb.Endpoint.subscribe("messages")
-    {:ok, assign(socket, :messages, ["test message..."])}
+    {:ok, assign(socket, :messages, [])}
   end
 
   @impl true
